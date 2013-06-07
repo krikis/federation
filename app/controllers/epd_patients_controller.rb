@@ -1,0 +1,2 @@
+class EpdPatientsController < ApplicationController
+end
