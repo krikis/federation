@@ -1,0 +1,2 @@
+class FederationsController < ApplicationController
+end

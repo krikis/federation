@@ -1,4 +1,7 @@
 Federation::Application.routes.draw do
+
+  resource :federation
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

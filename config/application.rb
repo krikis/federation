@@ -58,5 +58,14 @@ module Federation
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+      g.template_engine     :haml
+      g.orm                 :active_record
+      g.test_framework      false
+      g.helper              false
+      g.stylesheets         false
+      g.javascripts         false
+    end
   end
 end
