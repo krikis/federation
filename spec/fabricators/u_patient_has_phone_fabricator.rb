@@ -1,0 +1,1 @@
+Fabricator(:u_patient_has_phone)
