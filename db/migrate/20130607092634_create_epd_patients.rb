@@ -3,7 +3,7 @@ class CreateEpdPatients < ActiveRecord::Migration
     # create the epd_patients view
     execute <<-SQL
       create view epd_patients as
-      select r.epd_patient_id,
+      select r.epd_patient_id as epd_patient_id,
              min(coalesce(m.date, u.date)) as date,
              min(coalesce(case m.gender when 'M' then 'Male' when 'F' then 'Female' end, u.gender)) as gender,
              min(coalesce(m.name, u.name)) as name,
