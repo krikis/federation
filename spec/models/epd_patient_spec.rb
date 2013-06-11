@@ -51,10 +51,12 @@ describe EpdPatient do
       end
 
       context 'and a UPatientHasPhone exists with the UPatient u_patient_nr' do
-        let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
+        let!(:u_home_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
+        let!(:u_mobile_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 123456789 }
+        let!(:u_office_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 1234567890 }
 
         it 'has an instance containing this UPatient phone_number' do
-          EpdPatient.first.home_phone_nr.should eq(u_patient_phone.phone)
+          EpdPatient.first.home_phone_nr.should eq(u_home_phone.phone)
         end
       end
     end
