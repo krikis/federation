@@ -39,6 +39,7 @@ group :test do
   gem 'fuubar'
   gem 'fabrication'
   gem 'database_cleaner'
+  gem 'timecop'
 end
 
 # To use ActiveModel has_secure_password
