@@ -1,0 +1,1 @@
+Fabricator(:m_patient_is_allergic_to_drug)
