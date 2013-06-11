@@ -17,7 +17,7 @@ describe EpdPatient do
                               gender: 'M', name: 'some_name', phone_number: 87654321
       end
 
-      it 'has an instance containing this object attributes' do
+      it 'has an instance containing this MPatient attributes' do
         EpdPatient.first.attributes.should eq("epd_patient_id" => mzkh_role.epd_patient_id,
                                               "date" => m_patient.date,
                                               "gender" => 'Male',
@@ -42,7 +42,7 @@ describe EpdPatient do
                               gender: 'Female', name: 'some_other_name'
       end
 
-      it 'has an instance containing this object attributes' do
+      it 'has an instance containing this UPatient attributes' do
         EpdPatient.first.attributes.should eq("epd_patient_id" => umcg_role.epd_patient_id,
                                               "date" => u_patient.date,
                                               "gender" => u_patient.gender,
@@ -86,7 +86,7 @@ describe EpdPatient do
       end
       let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
 
-      it 'has an instance which is the coalescence of both patients' do
+      it 'has an instance which is the coalescence of this MPatient and UPatient' do
         EpdPatient.first.attributes.should eq("epd_patient_id" => epd_patient_id,
                                               "date" => m_patient.date,
                                               "gender" => u_patient.gender,
