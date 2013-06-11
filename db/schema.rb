@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130607092634) do
     t.datetime "date"
     t.string   "gender"
     t.string   "name"
-    t.integer  "phone_number"
+    t.integer  "home_phone_nr"
   end
 
   create_table "m_patient_admitted_for_admission_reason_on_dates", :force => true do |t|

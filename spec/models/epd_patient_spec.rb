@@ -34,7 +34,7 @@ describe EpdPatient do
       end
 
       it 'an EpdPatient exists with the MPatient phone_number' do
-        EpdPatient.first.phone_number.should eq(m_patient.phone_number)
+        EpdPatient.first.home_phone_nr.should eq(m_patient.phone_number)
       end
     end
   end
@@ -71,7 +71,7 @@ describe EpdPatient do
         let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: local_nr, phone: 12345678 }
 
         it 'an EpdPatient exists with the UPatient phone_number' do
-          EpdPatient.first.phone_number.should eq(u_patient_phone.phone)
+          EpdPatient.first.home_phone_nr.should eq(u_patient_phone.phone)
         end
       end
     end
