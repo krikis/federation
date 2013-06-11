@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607093017) do
+ActiveRecord::Schema.define(:version => 20130607093031) do
 
   create_table "epd_patient_plays_role_using_local_nrs", :force => true do |t|
     t.integer  "local_nr"
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(:version => 20130607093017) do
   create_table "martini_patients", :id => false, :force => true do |t|
     t.integer "martini_patient_nr"
     t.integer "epd_patient_id"
+  end
+
+  create_table "martini_treatment_involves_drugs", :id => false, :force => true do |t|
+    t.datetime "date"
+    t.string   "drug_code"
+    t.integer  "martini_patient_nr"
+    t.integer  "martini_doctor_id"
   end
 
   create_table "u_patient_has_phones", :force => true do |t|

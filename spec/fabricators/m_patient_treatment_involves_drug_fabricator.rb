@@ -1,0 +1,1 @@
+Fabricator(:m_patient_treatment_involves_drug)
