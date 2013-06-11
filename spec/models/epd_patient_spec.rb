@@ -18,23 +18,23 @@ describe EpdPatient do
                               gender: 'M', name: 'some_name', phone_number: 87654321
       end
 
-      it 'an EpdPatient exists with the role EpdPatientId' do
+      it 'has an instance with the role EpdPatientId' do
         EpdPatient.first.epd_patient_id.should eq(epd_patient_id)
       end
 
-      it 'an EpdPatient exists with the MPatient date' do
+      it 'has an instance with the MPatient date' do
         EpdPatient.first.date.to_s.should eq(m_patient.date.to_s)
       end
 
-      it 'an EpdPatient exists with the MPatient gender' do
+      it 'has an instance with the MPatient gender' do
         EpdPatient.first.gender.should eq('Male')
       end
 
-      it 'an EpdPatient exists with the MPatient name' do
+      it 'has an instance with the MPatient name' do
         EpdPatient.first.name.should eq(m_patient.name)
       end
 
-      it 'an EpdPatient exists with the MPatient phone_number' do
+      it 'has an instance with the MPatient phone_number' do
         EpdPatient.first.home_phone_nr.should eq(m_patient.phone_number)
       end
     end
@@ -56,26 +56,26 @@ describe EpdPatient do
                               gender: 'Female', name: 'some_other_name'
       end
 
-      it 'an EpdPatient exists with the role EpdPatientId' do
+      it 'has an instance with the role EpdPatientId' do
         EpdPatient.first.epd_patient_id.should eq(epd_patient_id)
       end
 
-      it 'an EpdPatient exists with the UPatient date' do
+      it 'has an instance with the UPatient date' do
         EpdPatient.first.date.to_s.should eq(u_patient.date.to_s)
       end
 
-      it 'an EpdPatient exists with the UPatient gender' do
+      it 'has an instance with the UPatient gender' do
         EpdPatient.first.gender.should eq(u_patient.gender)
       end
 
-      it 'an EpdPatient exists with the UPatient name' do
+      it 'has an instance with the UPatient name' do
         EpdPatient.first.name.should eq(u_patient.name)
       end
 
       context 'and a UPatientHasPhone exists with the UPatient u_patient_nr' do
         let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
 
-        it 'an EpdPatient exists with the UPatient phone_number' do
+        it 'has an instance with the UPatient phone_number' do
           EpdPatient.first.home_phone_nr.should eq(u_patient_phone.phone)
         end
       end
@@ -108,7 +108,7 @@ describe EpdPatient do
       end
       let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
 
-      it 'returns the coalescence of both patients' do
+      it 'has an instance which is the coalescence of both patients' do
         EpdPatient.first.attributes.should eq("epd_patient_id" => epd_patient_id,
                                               "date" => m_patient.date.to_s,
                                               "gender" => u_patient.gender,
