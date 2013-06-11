@@ -22,7 +22,11 @@ ActiveRecord::Schema.define(:version => 20130607092634) do
   end
 
   create_table "epd_patients", :id => false, :force => true do |t|
-    t.integer "epd_patient_id"
+    t.integer  "epd_patient_id"
+    t.datetime "date"
+    t.string   "gender"
+    t.string   "name"
+    t.integer  "phone_number"
   end
 
   create_table "m_patient_admitted_for_admission_reason_on_dates", :force => true do |t|
