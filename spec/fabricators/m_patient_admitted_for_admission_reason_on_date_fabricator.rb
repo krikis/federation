@@ -1,0 +1,1 @@
+Fabricator(:m_patient_admitted_for_admission_reason_on_date)
