@@ -1,0 +1,12 @@
+- if (associated = object.send(association.name)).present?
+  %p
+    %span.label.label-success= association.name
+    - if associated.is_a? Array
+      - associated.each do |associated_object|
+        - unless associated_object == associated.first
+          %span.separator &middot;
+        - associated_object.details.each do |key, value|
+          %span.label.label-info= value
+    - else
+      - associated.details.each do |key, value|
+        %span.label.label-info= value

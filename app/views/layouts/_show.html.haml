@@ -1,0 +1,17 @@
+%p
+  %span.label.label-success= object.class.param_name
+  - object.details.each do |key, value|
+    %span.label.label-info= value
+- object.class.reflect_on_all_associations.each do |association|
+  = render partial: 'layouts/show_associations', locals: {object: object, association: association}
+- if edit_mode
+  .fat-row-buttons
+    = link_to icon(:edit).html_safe,
+              '#',
+              class: 'btn btn-small',
+              'data-toggle' => 'modal',
+              'data-target' => ".#{object.class.param_name}_editor##{object.id}"
+    = link_to icon(:trash, :white).html_safe,
+              url_for(controller: object.class.param_name.pluralize, action: 'destroy', id: object.id, only_path: true),
+              method: 'delete',
+              class: 'btn btn-small btn-danger'
