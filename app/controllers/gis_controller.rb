@@ -1,0 +1,2 @@
+class GisController < ApplicationController
+end

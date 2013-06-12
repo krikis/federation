@@ -1,2 +1,0 @@
-class UmcgPatientsController < ApplicationController
-end

@@ -1,2 +1,0 @@
-class MzkhPatientsController < ApplicationController
-end

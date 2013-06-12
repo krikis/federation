@@ -1,0 +1,2 @@
+class UPatientsController < ApplicationController
+end
