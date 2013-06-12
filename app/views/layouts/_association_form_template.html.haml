@@ -1,0 +1,9 @@
+- param_name, human_name = association.klass.param_name, association.klass.human_name
+%div{id: param_name, style: 'display: none'}
+  %div
+    %legend= human_name
+    - param = "#{param_name}[new][]"
+    - options = {}
+    - options[primary_key] = object.attributes[primary_key]
+    - association.klass.new(options).form_details.each do |key, label, type, value|
+      = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}

@@ -1,18 +1,15 @@
-- m_patient_param, m_patient_human = MPatient.param_name, MPatient.human_name
-- admission_param, admission_human = MPatientAdmittedForAdmissionReasonOnDate.param_name,
-                                     MPatientAdmittedForAdmissionReasonOnDate.human_name
-- if m_patient.id
-  - path, method, title, modal_id = m_patient_path(m_patient), :put, "Edit #{m_patient_human}", m_patient.id
+- param_name, human_name = object.class.param_name, object.class.human_name
+- if object.id
+  - path = url_for(controller: object.class.param_name.pluralize, action: 'update', id: object.id, only_path: true)
+  - method, title, modal_id = :put, "Edit #{human_name}", object.id
 - else
-  - path, method, title, modal_id = m_patients_path, :post, "New #{m_patient_human}", 'new'
--# form templates
-%div{id: admission_param, style: 'display: none'}
-  %div
-    %legend= admission_human
-    - param = "#{admission_param}[new][]"
-    - MPatientAdmittedForAdmissionReasonOnDate.new(m_patient_nr: m_patient.m_patient_nr).form_details.each do |key, label, type, value|
-      = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}
--# editor in modal
+  - path = url_for(controller: object.class.param_name.pluralize, action: 'create', only_path: true)
+  - method, title, modal_id = :post, "New #{human_name}", 'new'
+-# generate form templates for associations
+- if edit_mode
+  - object.class.reflect_on_all_associations.each do |association|
+    = render partial: 'layouts/association_form_template', locals: {association: association, object: object, primary_key: primary_key}
+-# in modal editor
 .modal.hide.fade.m_patient_editor{id: modal_id}
   = form_tag(path, method: method, class: 'form-horizontal') do
     .modal-header
@@ -22,30 +19,15 @@
     .modal-body
       .container-fluid
         %fieldset
-          %legend= m_patient_human
-          - m_patient.form_details.each do |key, label, type, value|
-            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: m_patient_param}
-          - m_patient.m_patient_admitted_for_admission_reason_on_dates.each do |admission|
-            %legend= admission_human
-            - param = "#{admission_param}[#{admission.id}]"
-            - admission.form_details.each do |key, label, type, value|
-              = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}
-          %a.btn.btn-info.add-button{href: '#', id: admission_param}
-            = "#{icon(:plus, :white)} Add #{admission_human}".html_safe
+          %legend= human_name
+          - object.form_details.each do |key, label, type, value|
+            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param_name}
+          - # render association details
+          - object.class.reflect_on_all_associations.each do |association|
+            = render partial: 'layouts/association_form', locals: {association: association, object: object}
       .scroll-helper
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         Cancel
       %button.btn.btn-primary{type: 'submit', data: {'loading-text' => 'Working'}}
         Submit
-
-:coffeescript
-  $ ->
-    $('a.add-button').click ->
-      if window.getSemaphore()
-        form_content = $($("div#\#{$(@).attr('id')}").html())
-        form_content.insertBefore($(@))
-        $(@).parents('.modal-body').scrollTo(form_content)
-        form_content.effect('highlight')
-        false
-

@@ -1,15 +1,18 @@
+-# render object show views
 .m_patients
-  = render partial: 'm_patients/index', locals: {m_patients: @m_patients}
-.u_patients
   = render partial: 'layouts/index', locals: {objects: @m_patients, object_class: MPatient, edit_mode: true}
+.u_patients
+  = render partial: 'layouts/index', locals: {objects: @u_patients, object_class: UPatient, edit_mode: true}
 .gis
   = render partial: 'gis/index', locals: {gis: @gis}
 .epd_patients
   = render partial: 'epd_patients/index', locals: {epd_patients: @epd_patients}
 
-= render partial: 'm_patients/edit', locals: {m_patient: MPatient.new}
-- @m_patients.each do |m_patient|
-  = render partial: 'm_patients/edit', locals: {m_patient: m_patient, edit_mode: true}
+-# render object editors
+- ([MPatient.new] + @m_patients).each do |object|
+  = render partial: 'layouts/edit', locals: {object: object, primary_key: 'm_patient_nr', edit_mode: true}
+-# - ([UPatient.new] + @u_patients).each do |object|
+-#   = render partial: 'layouts/edit', locals: {object: object, primary_key: 'u_patient_nr', edit_mode: true}
 
 :coffeescript
   $ ->
@@ -18,3 +21,11 @@
     ), (->
       $(@).find('.fat-row-buttons').hide()
     )
+
+    $('a.add-button').click ->
+      form_content = $($("div#\#{$(@).attr('id')}").html())
+      form_content.insertBefore($(@))
+      $(@).parents('.modal-body').scrollTo(form_content, duration: 200)
+      form_content.effect('highlight')
+      form_content.find(':input:visible:first').focus()
+      false
