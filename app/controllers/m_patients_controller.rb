@@ -10,6 +10,7 @@ class MPatientsController < ApplicationController
 
   def destroy
     MPatient.find_by_id(params[:id]).andand.destroy
+    redirect_to root_path
   end
 
 end
