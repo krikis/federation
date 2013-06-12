@@ -3,10 +3,13 @@ class MPatient < ActiveRecord::Base
   include HasDetails
 
   has_many :m_patient_is_allergic_to_drugs,
+           primary_key: 'm_patient_nr',
            foreign_key: 'm_patient_nr'
-  has_many :m_patient_treatment_involves_drug,
+  has_many :m_patient_treatment_involves_drugs,
+           primary_key: 'm_patient_nr',
            foreign_key: 'm_patient_nr'
   has_many :m_patient_admitted_for_admission_reason_on_dates,
+           primary_key: 'm_patient_nr',
            foreign_key: 'm_patient_nr'
 
 end

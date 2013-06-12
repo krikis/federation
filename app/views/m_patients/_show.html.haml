@@ -1,7 +1,11 @@
 %p
   - m_patient.details.each do |key, value|
     - if value.present?
-      %span= value
+      %span.label= value
+  - m_patient.m_patient_is_allergic_to_drugs.each do |m_patient_is_allergic_to_drug|
+    - m_patient_is_allergic_to_drug.details.each do |key, value|
+      - if value.present?
+        %span.label.label-success= value
 .fat-row-buttons
   = link_to icon(:edit).html_safe,
             '#',
