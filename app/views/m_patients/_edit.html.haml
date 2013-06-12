@@ -2,11 +2,11 @@
 - admission_param, admission_human = MPatientAdmittedForAdmissionReasonOnDate.param_name,
                                      MPatientAdmittedForAdmissionReasonOnDate.human_name
 - if m_patient.id
-  - path, method, title, modal_id = m_patient_path(m_patient), :put, 'Edit Martini Patient', m_patient.id
+  - path, method, title, modal_id = m_patient_path(m_patient), :put, "Edit #{m_patient_human}", m_patient.id
 - else
-  - path, method, title, modal_id = m_patients_path, :post, 'New Martini Patient', 'new'
+  - path, method, title, modal_id = m_patients_path, :post, "New #{m_patient_human}", 'new'
 -# form templates
-%div{class: admission_param, style: 'display: none'}
+%div{id: admission_param, style: 'display: none'}
   %div
     %legend= admission_human
     - param = "#{admission_param}[new][]"
@@ -30,8 +30,8 @@
             - param = "#{admission_param}[#{admission.id}]"
             - admission.form_details.each do |key, label, type, value|
               = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}
-          %a.btn.btn-info{href: '#', class: admission_param}
-            = "Add #{admission_human}"
+          %a.btn.btn-info.add-button{href: '#', id: admission_param}
+            = "#{icon(:plus, :white)} Add #{admission_human}".html_safe
       .scroll-helper
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
@@ -41,11 +41,11 @@
 
 :coffeescript
   $ ->
-    $('a.#{admission_param}').click ->
+    $('a.add-button').click ->
       if window.getSemaphore()
-        form_content = $($('div.#{admission_param}').html())
+        form_content = $($("div#\#{$(@).attr('id')}").html())
         form_content.insertBefore($(@))
-        $(".m_patient_editor##{modal_id} .modal-body").scrollTo(form_content)
+        $(@).parents('.modal-body').scrollTo(form_content)
         form_content.effect('highlight')
         false
 
