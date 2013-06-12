@@ -1,7 +1,7 @@
 .control-group.row-fluid
   %label.control-label{for: 'dummy_id'}= label
   .controls
-    - if value.is_a? Time
-      = date_select param, key, default: value, :order => [:day, :month, :year]
+    - if type == :datetime
+      = select_date value, :order => [:day, :month, :year], prefix: "#{param}[#{key}]"
     - else
       = text_field_tag "#{param}[#{key}]", value, class: 'span12', maxlength: 40, placeholder: key

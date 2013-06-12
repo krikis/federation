@@ -10,12 +10,13 @@ module HasDetails
   end
 
   def form_details
-    self.class.form_fields.map{|key, label| [key, label, attributes[key]]}
+    self.class.form_fields.map{|key, label, type| [key, label, type, attributes[key]]}
   end
 
   module ClassMethods
     def form_fields
-      column_names.reject{|name| FILTER.include? name}.map{|name| [name, name.humanize]}
+      columns.reject{|column| FILTER.include? column.name}
+             .map{|column| [column.name, column.human_name, column.type]}
     end
 
     def human_name
