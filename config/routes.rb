@@ -1,5 +1,7 @@
 Federation::Application.routes.draw do
 
+  root to: 'federations#show'
+
   resource  :federation, only: 'show'
   resources :epd_patients
   resources :m_patients
