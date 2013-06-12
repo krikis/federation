@@ -10,7 +10,7 @@ class UPatient < ActiveRecord::Base
            primary_key: 'u_patient_nr',
            foreign_key: 'u_patient_nr',
            dependent: :destroy
-  has_many :u_patient_treatemt_involves_drugs,
+  has_many :u_patient_treatment_involves_drugs,
            primary_key: 'u_patient_nr',
            foreign_key: 'u_patient_nr',
            dependent: :destroy

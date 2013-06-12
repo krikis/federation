@@ -11,8 +11,8 @@
 -# render object editors
 - ([MPatient.new] + @m_patients).each do |object|
   = render partial: 'layouts/edit', locals: {object: object, primary_key: 'm_patient_nr', edit_mode: true}
--# - ([UPatient.new] + @u_patients).each do |object|
--#   = render partial: 'layouts/edit', locals: {object: object, primary_key: 'u_patient_nr', edit_mode: true}
+- ([UPatient.new] + @u_patients).each do |object|
+  = render partial: 'layouts/edit', locals: {object: object, primary_key: 'u_patient_nr', edit_mode: true}
 
 :coffeescript
   $ ->
