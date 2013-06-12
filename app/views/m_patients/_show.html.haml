@@ -1,6 +1,10 @@
 %p
   - m_patient.details.each do |key, value|
     %span.label.label-info= value
+  - m_patient.m_patient_admitted_for_admission_reason_on_dates.each do |m_patient_admitted_for_admission_reason_on_date|
+    %span.separator &middot;
+    - m_patient_admitted_for_admission_reason_on_date.details.each do |key, value|
+      %span.label.label-info= value
   - m_patient.m_patient_treatment_involves_drugs.each do |m_patient_treatment_involves_drug|
     %span.separator &middot;
     - m_patient_treatment_involves_drug.details.each do |key, value|
