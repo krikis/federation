@@ -1,0 +1,47 @@
+- m_patient_param, m_patient_human = MPatient.param_name, MPatient.human_name
+- admission_param, admission_human = MPatientAdmittedForAdmissionReasonOnDate.param_name,
+                                     MPatientAdmittedForAdmissionReasonOnDate.human_name
+- if m_patient.id
+  - path, method, title = m_patient_path(m_patient), :put, 'Edit Martini Patient'
+- else
+  - path, method, title = m_patients_path, :post, 'New Martini Patient'
+-# form templates
+%div{class: admission_param, style: 'display: none'}
+  %legend= admission_human
+  - param = "#{admission_param}[new][]"
+  - MPatientAdmittedForAdmissionReasonOnDate.form_fields.each do |key, label|
+    = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, value: nil, param: param}
+-# editor in modal
+.modal.hide.fade.m_patient_editor{id: m_patient.id || 'new'}
+  = form_tag(path, method: method, class: 'form-horizontal') do
+    .modal-header
+      %a.close{data: {dismiss: 'modal'}}
+        ×
+      %h3= title
+    .modal-body
+      .container-fluid
+        %fieldset
+          %legend= m_patient_human
+          - m_patient.form_details.each do |key, label, value|
+            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, value: value, param: m_patient_param}
+          - m_patient.m_patient_admitted_for_admission_reason_on_dates.each do |admission|
+            %legend= admission_human
+            - param = "#{admission_param}[#{admission.id}]"
+            - admission.form_details.each do |key, label, value|
+              = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, value: value, param: param}
+          %a.btn.btn-info{href: '#', class: admission_param}
+            = "Add #{admission_human}"
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Cancel
+      %button.btn.btn-primary{type: 'submit', data: {'loading-text' => 'Working'}}
+        Submit
+
+:coffeescript
+  $ ->
+    $('a.#{admission_param}').click ->
+      if window.getSemaphore()
+        form_content = $($('div.#{admission_param}').html())
+        form_content.insertBefore($(@))
+
+

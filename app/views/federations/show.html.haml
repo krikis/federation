@@ -7,6 +7,9 @@
 .epd_patients
   = render partial: 'epd_patients/index', locals: {epd_patients: @epd_patients}
 
+- @m_patients.each do |m_patient|
+  = render partial: 'm_patients/edit', locals: {m_patient: m_patient}
+
 :coffeescript
   $ ->
     $('.fat-row').hover (->

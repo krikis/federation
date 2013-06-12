@@ -1,8 +1,30 @@
 module HasDetails
 
+  extend ActiveSupport::Concern
+
+  FILTER = ['id', 'created_at', 'updated_at']
+
   def details
-    attributes.reject{|key, value| ['id', 'created_at', 'updated_at'].include? key or not value.present?}
+    attributes.reject{|key, value| FILTER.include? key or not value.present?}
               .map{|key, value| [key, date_to_string(value)]}
+  end
+
+  def form_details
+    self.class.form_fields.map{|key, label| [key, label, attributes[key]]}
+  end
+
+  module ClassMethods
+    def form_fields
+      column_names.reject{|name| FILTER.include? name}.map{|name| [name, name.humanize]}
+    end
+
+    def human_name
+      param_name.humanize
+    end
+
+    def param_name
+      to_s.underscore
+    end
   end
 
   private
