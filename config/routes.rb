@@ -1,6 +1,10 @@
 Federation::Application.routes.draw do
 
-  resource :federation
+  resource  :federation, only: 'show'
+  resources :epd_patients
+  resources :m_patients
+  resources :u_patients
+  resources :gis
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
