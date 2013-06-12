@@ -30,6 +30,10 @@ module HasDetails
     def dashed_name
       to_s.underscore.dasherize
     end
+
+    def associations
+      reflect_on_all_associations.sort_by{|association| association.klass.to_s}
+    end
   end
 
   private

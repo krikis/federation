@@ -5,7 +5,7 @@
       %span.label.label-important= value
     - else
       %span.label.label-success= value
-- object.class.reflect_on_all_associations.each do |association|
+- object.class.associations.each do |association|
   = render partial: 'layouts/show_associations', locals: {object: object, association: association, primary_key: primary_key}
 - if edit_mode
   .fat-row-buttons
@@ -13,7 +13,7 @@
               '#',
               class: 'btn btn-small',
               'data-toggle' => 'modal',
-              'data-target' => ".#{object.class.param_name}_editor##{object.id}"
+              'data-target' => "##{object.id}.#{object.class.param_name}_editor"
     = link_to icon(:trash, :white).html_safe,
               url_for(controller: object.class.param_name.pluralize, action: 'destroy', id: object.id, only_path: true),
               method: 'delete',
