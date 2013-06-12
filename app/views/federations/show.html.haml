@@ -1,8 +1,8 @@
 .m_patients
-  = render partial: 'm_patients/index'
+  = render partial: 'm_patients/index', locals: {m_patients: @m_patients}
 .u_patients
-  = render partial: 'u_patients/index'
+  = render partial: 'u_patients/index', locals: {u_patients: @u_patients}
 .gis
-  = render partial: 'gis/index'
+  = render partial: 'gis/index', locals: {gis: @gis}
 .epd_patients
-  = render partial: 'epd_patients/index'
+  = render partial: 'epd_patients/index', locals: {epd_patients: @epd_patients}
