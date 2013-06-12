@@ -1,3 +1,8 @@
 class UmcgPatient < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  has_many :umcg_treatments,
+           foreign_key: 'umcg_patient_nr'
+  has_many :umcg_treatment_involves_drugs,
+           foreign_key: 'umcg_patient_nr'
+
 end
