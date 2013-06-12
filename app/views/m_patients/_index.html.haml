@@ -1,0 +1,12 @@
+= link_to "#{icon(:plus, :white)} Add MPatient".html_safe,
+          '#',
+          class: 'btn btn-info add_m_patient'
+.container-fluid
+  - m_patients.each do m_patient
+    .row-fluid
+      = render partial: 'show'
+
+:coffeescript
+  $ ->
+    $('.add_m_patient').click ->
+      false
