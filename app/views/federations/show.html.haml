@@ -6,3 +6,11 @@
   = render partial: 'gis/index', locals: {gis: @gis}
 .epd_patients
   = render partial: 'epd_patients/index', locals: {epd_patients: @epd_patients}
+
+:coffeescript
+  $ ->
+    $('.fat-row').hover (->
+      $(@).find('.fat-row-buttons').show()
+    ), (->
+      $(@).find('.fat-row-buttons').hide()
+    )

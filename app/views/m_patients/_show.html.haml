@@ -1,0 +1,13 @@
+%p
+  - m_patient.details.each do |key, value|
+    - if value.present?
+      %span= value
+.fat-row-buttons
+  = link_to icon(:edit).html_safe,
+            '#',
+            class: 'btn btn-small',
+            id: m_patient.id
+  = link_to icon(:trash, :white).html_safe,
+            m_patient_path(m_patient),
+            method: 'delete',
+            class: 'btn btn-small btn-danger'

@@ -16,8 +16,8 @@
 
 .scrollable
   position: fixed
-  top: 4.25532%
-  bottom: 4.25532%
+  top: 3.19149%
+  bottom: 3.19149%
   overflow-x: hidden
   overflow-y: auto
 
@@ -25,24 +25,55 @@
   @extend .scrollable
   width: 38.12057%
   left: 2.12766%
-  bottom: 52.12766%
-  background-color: blue
+  bottom: 51.595745%
 
 .u_patients
   @extend .scrollable
   width: 38.12057%
   left: 2.12766%
-  top: 52.12766%
-  background-color: yellow
+  top: 51.595745%
 
 .gis
   @extend .scrollable
   width: 15.24823%
   left: 42.37589%
-  background-color: red
 
 .epd_patients
   @extend .scrollable
   width: 38.12057%
   left: 59.75178%
-  background-color: green
+
+.buttons
+  margin-bottom: 10px
+
+.fat-row
+  position: relative
+  padding: 5px
+  min-height: 26px
+
+  p
+    display: inline-block
+    vertical-align: middle
+    margin: 0
+
+  span
+    display: inline-block
+    vertical-align: middle
+    white-space: nowrap
+
+  &:hover, &:active
+    background-color: #f5f5f5
+
+.fat-row-buttons
+  display: none
+  position: absolute
+  right: 5px
+  top: 5px
+  height: 26px
+
+.fat-rows > :nth-child(odd)
+  background-color: #f9f9f9
+
+.fat-row span:nth-child(even)
+  @extend .label
+

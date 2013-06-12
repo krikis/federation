@@ -1,5 +1,7 @@
 class MPatient < ActiveRecord::Base
 
+  include HasDetails
+
   has_many :m_patient_is_allergic_to_drugs,
            foreign_key: 'm_patient_nr'
   has_many :m_patient_treatment_involves_drug,
