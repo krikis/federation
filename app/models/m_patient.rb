@@ -4,7 +4,7 @@ class MPatient < ActiveRecord::Base
            foreign_key: 'm_patient_nr'
   has_many :m_patient_treatment_involves_drug,
            foreign_key: 'm_patient_nr'
-  has_many :m_patient_admitted_for_admission_reason_on_dates
+  has_many :m_patient_admitted_for_admission_reason_on_dates,
            foreign_key: 'm_patient_nr'
 
 end
