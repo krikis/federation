@@ -5,11 +5,11 @@
       %legend= human_name
       - param = "#{param_name}[#{associated_object.id}]"
       - associated_object.form_details.each do |key, label, type, value|
-        = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}
+        = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param, primary_key: primary_key}
   - else
     %legend= human_name
     - param = "#{param_name}[#{associated.id}]"
     - associated.form_details.each do |key, label, type, value|
-      = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param}
+      = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param, primary_key: primary_key}
 %a.btn.btn-info.add-button{href: '#', id: param_name}
   = "#{icon(:plus, :white)} Add #{human_name}".html_safe

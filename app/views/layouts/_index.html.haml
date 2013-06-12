@@ -9,4 +9,4 @@
 %ul.fat-rows
   - objects.each do |object|
     %li.fat-row
-      = render partial: 'layouts/show', locals: {object: object, edit_mode: edit_mode}
+      = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}

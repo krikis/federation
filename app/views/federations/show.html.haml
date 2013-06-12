@@ -1,8 +1,8 @@
 -# render object show views
 .m_patients
-  = render partial: 'layouts/index', locals: {objects: @m_patients, object_class: MPatient, edit_mode: true}
+  = render partial: 'layouts/index', locals: {objects: @m_patients, object_class: MPatient, primary_key: 'm_patient_nr', edit_mode: true}
 .u_patients
-  = render partial: 'layouts/index', locals: {objects: @u_patients, object_class: UPatient, edit_mode: true}
+  = render partial: 'layouts/index', locals: {objects: @u_patients, object_class: UPatient, primary_key: 'u_patient_nr', edit_mode: true}
 .gis
   = render partial: 'gis/index', locals: {gis: @gis}
 .epd_patients

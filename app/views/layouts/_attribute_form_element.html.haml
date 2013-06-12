@@ -1,5 +1,5 @@
-.control-group.row-fluid
-  %label.control-label{for: 'dummy_id'}= label
+.control-group.row-fluid{class: ('info' if key == primary_key)}
+  %label.control-label= label
   .controls
     - if type == :datetime
       = select_date value, :order => [:day, :month, :year], prefix: param, field_name: key, include_position: true, include_blank: true

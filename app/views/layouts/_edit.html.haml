@@ -21,10 +21,10 @@
         %fieldset
           %legend= human_name
           - object.form_details.each do |key, label, type, value|
-            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param_name}
+            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param_name, primary_key: primary_key}
           - # render association details
           - object.class.reflect_on_all_associations.each do |association|
-            = render partial: 'layouts/association_form', locals: {association: association, object: object}
+            = render partial: 'layouts/association_form', locals: {association: association, object: object, primary_key: primary_key}
       .scroll-helper
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
