@@ -1,12 +1,15 @@
 - class_name = object_class.dashed_name.pluralize
-- if edit_mode
-  .add{class: class_name}
+.add{class: class_name}
+  - if edit_mode
     .buttons
       = link_to "#{icon(:plus, :white)} Add #{object_class.human_name}".html_safe,
                 '#',
                 class: 'btn btn-info btn-small',
                 'data-toggle' => 'modal',
                 'data-target' => ".#{object_class.param_name}_editor#new"
+  - else
+    .header
+      %h4= object_class.human_name.pluralize
 %div{class: class_name}
   %ul.fat-rows
     - objects.each do |object|
