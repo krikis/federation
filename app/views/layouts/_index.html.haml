@@ -11,3 +11,5 @@
     - objects.each do |object|
       %li.fat-row
         = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}
+.fade-in{class: object_class.dashed_name.pluralize}
+.fade-out{class: object_class.dashed_name.pluralize}
