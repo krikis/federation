@@ -1,7 +1,7 @@
 module HasDetails
 
   def details
-    attributes.reject{|key, value| ['id', 'created_at', 'updated_at'].include? key}
+    attributes.reject{|key, value| ['id', 'created_at', 'updated_at'].include? key or not value.present?}
               .map{|key, value| [key, date_to_string(value)]}
   end
 
