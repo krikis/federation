@@ -22,6 +22,11 @@ MPatient.create m_patient_nr: m_patient_2, date: (5000 + rand(10000)).days.ago, 
 MartiniTreatmentInvolvesDrug.create date: rand(2000).days.ago, drug_code: 'Drug1', martini_patient_nr: m_patient_2, martini_doctor_id: 10
 MPatientAdmittedForAdmissionReasonOnDate.create admission_reason_code: 'AdmissionReason1', date: rand(2000).days.ago, m_patient_nr: m_patient_2
 
+m_patient_3 = 125
+MPatient.create m_patient_nr: m_patient_3, date: (5000 + rand(10000)).days.ago, name: 'Second Opinion'
+MartiniTreatmentInvolvesDrug.create date: rand(2000).days.ago, drug_code: 'Drug1', martini_patient_nr: m_patient_3, martini_doctor_id: 10
+MPatientAdmittedForAdmissionReasonOnDate.create admission_reason_code: 'AdmissionReason2', date: rand(2000).days.ago, m_patient_nr: m_patient_3
+
 # ------------------------------------ UPatients -------------------------------
 u_patient_1 = 2030
 UPatient.create u_patient_nr: u_patient_1, date: (5000 + rand(10000)).days.ago, gender: 'Male', name: 'P. Atiënt'
@@ -41,3 +46,19 @@ UPatientTreatment.create date: rand(2000).days.ago, u_patient_nr: u_patient_2, d
 UPatientTreatmentInvolvesDrug.create date: rand(2000).days.ago, drug_code: 'Drug3', u_patient_nr: u_patient_2
 UPatientTreatmentInvolvesDrug.create date: rand(2000).days.ago, drug_code: 'Drug7', u_patient_nr: u_patient_2
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason2', date: rand(2000).days.ago, u_patient_nr: u_patient_2
+
+u_patient_3 = 2032
+UPatient.create u_patient_nr: u_patient_3, gender: 'Female'
+UPatientHasPhone.create phone: 123456789, u_patient_nr: u_patient_3
+UPatientHasPhone.create phone: 12345678, u_patient_nr: u_patient_3
+UPatientTreatmentInvolvesDrug.create date: rand(2000).days.ago, drug_code: 'Drug8', u_patient_nr: u_patient_3
+UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason3', date: rand(2000).days.ago, u_patient_nr: u_patient_3
+
+# ------------------------------------ Gis -------------------------------------
+
+Gi.create epd_patient_id: 1, local_nr: m_patient_1, role: 'MZKH'
+Gi.create epd_patient_id: 2, local_nr: m_patient_2, role: 'MZKH'
+Gi.create epd_patient_id: 3, local_nr: u_patient_1, role: 'UMCG'
+Gi.create epd_patient_id: 4, local_nr: u_patient_2, role: 'UMCG'
+Gi.create epd_patient_id: 5, local_nr: m_patient_3, role: 'MZKH'
+Gi.create epd_patient_id: 5, local_nr: u_patient_3, role: 'UMCG'

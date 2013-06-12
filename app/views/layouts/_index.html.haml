@@ -1,15 +1,16 @@
+- class_name = object_class.dashed_name.pluralize
 - if edit_mode
-  %div{class: "add-#{object_class.dashed_name.pluralize}"}
+  .add{class: class_name}
     .buttons
       = link_to "#{icon(:plus, :white)} Add #{object_class.human_name}".html_safe,
                 '#',
                 class: 'btn btn-info btn-small',
                 'data-toggle' => 'modal',
                 'data-target' => ".#{object_class.param_name}_editor#new"
-%div{class: object_class.dashed_name.pluralize}
+%div{class: class_name}
   %ul.fat-rows
     - objects.each do |object|
       %li.fat-row
         = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}
-.fade-in{class: object_class.dashed_name.pluralize}
-.fade-out{class: object_class.dashed_name.pluralize}
+.fade-in{class: class_name}
+.fade-out{class: class_name}
