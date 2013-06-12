@@ -2,17 +2,18 @@
 - admission_param, admission_human = MPatientAdmittedForAdmissionReasonOnDate.param_name,
                                      MPatientAdmittedForAdmissionReasonOnDate.human_name
 - if m_patient.id
-  - path, method, title = m_patient_path(m_patient), :put, 'Edit Martini Patient'
+  - path, method, title, modal_id = m_patient_path(m_patient), :put, 'Edit Martini Patient', m_patient.id
 - else
-  - path, method, title = m_patients_path, :post, 'New Martini Patient'
+  - path, method, title, modal_id = m_patients_path, :post, 'New Martini Patient', 'new'
 -# form templates
 %div{class: admission_param, style: 'display: none'}
-  %legend= admission_human
-  - param = "#{admission_param}[new][]"
-  - MPatientAdmittedForAdmissionReasonOnDate.form_fields.each do |key, label|
-    = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, value: nil, param: param}
+  %div
+    %legend= admission_human
+    - param = "#{admission_param}[new][]"
+    - MPatientAdmittedForAdmissionReasonOnDate.form_fields.each do |key, label|
+      = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, value: nil, param: param}
 -# editor in modal
-.modal.hide.fade.m_patient_editor{id: m_patient.id || 'new'}
+.modal.hide.fade.m_patient_editor{id: modal_id}
   = form_tag(path, method: method, class: 'form-horizontal') do
     .modal-header
       %a.close{data: {dismiss: 'modal'}}
@@ -43,5 +44,7 @@
       if window.getSemaphore()
         form_content = $($('div.#{admission_param}').html())
         form_content.insertBefore($(@))
+        $(".m_patient_editor##{modal_id} .modal-body").scrollTo(form_content)
+        form_content.effect('highlight')
 
 

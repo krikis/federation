@@ -12,7 +12,9 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery_ui
 #= require bootstrap
+#= require scroll_to
 #= require_tree .
 
 @getSemaphore = ->
