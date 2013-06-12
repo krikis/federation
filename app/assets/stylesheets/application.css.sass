@@ -21,17 +21,29 @@
   overflow-x: hidden
   overflow-y: auto
 
-.m_patients
+.add-m-patients
+  position: fixed
+  top: 3.19149%
+  left: 1.06383%
+  z-index: 200
+
+.m-patients
   @extend .scrollable
-  width: 38.12057%
-  left: 2.12766%
+  width: 40.60284%
+  left: 1.06383%
   bottom: 51.595745%
 
-.u_patients
-  @extend .scrollable
-  width: 38.12057%
-  left: 2.12766%
+.add-u-patients
+  position: fixed
   top: 51.595745%
+  left: 1.06383%
+  z-index: 200
+
+.u-patients
+  @extend .scrollable
+  width: 40.60284%
+  top: 51.595745%
+  left: 1.06383%
 
 .gis
   @extend .scrollable
@@ -44,10 +56,14 @@
   left: 59.75178%
 
 .buttons
-  margin-bottom: 10px
-  margin-left: 30px
+  padding-top: 5px
+  padding-left: 30px
+
+.buttons > *
+  +box-shadow(0 0 5px 5px white)
 
 .fat-rows
+  padding-top: 36px
   margin-bottom: 0
 
 .fat-row

@@ -26,6 +26,10 @@ module HasDetails
     def param_name
       to_s.underscore
     end
+
+    def dashed_name
+      to_s.underscore.dasherize
+    end
   end
 
   private

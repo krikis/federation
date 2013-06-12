@@ -1,12 +1,13 @@
 - if edit_mode
-  .buttons
-    = link_to "#{icon(:plus, :white)} Add #{object_class.human_name}".html_safe,
-              '#',
-              class: 'btn btn-info btn-small',
-              'data-toggle' => 'modal',
-              'data-target' => ".#{object_class.param_name}_editor#new"
-
-%ul.fat-rows
-  - objects.each do |object|
-    %li.fat-row
-      = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}
+  %div{class: "add-#{object_class.dashed_name.pluralize}"}
+    .buttons
+      = link_to "#{icon(:plus, :white)} Add #{object_class.human_name}".html_safe,
+                '#',
+                class: 'btn btn-info btn-small',
+                'data-toggle' => 'modal',
+                'data-target' => ".#{object_class.param_name}_editor#new"
+%div{class: object_class.dashed_name.pluralize}
+  %ul.fat-rows
+    - objects.each do |object|
+      %li.fat-row
+        = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}
