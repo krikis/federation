@@ -23,20 +23,22 @@
 
 .m-patients
   @extend .scrollable
-  width: 40.07092%
+  width: 38.07092%
   left: 1.06383%
   bottom: 51.595745%
+.m-patients.fade-out
+  top: 48.404255%
 
 .u-patients
   @extend .scrollable
-  width: 40.07092%
+  width: 38.07092%
   top: 51.595745%
   left: 1.06383%
 
 .gis
   @extend .scrollable
-  width: 15.60284%
-  left: 42.19858%
+  width: 17.60284%
+  left: 40.19858%
 
 .epd-patients
   @extend .scrollable
@@ -57,10 +59,12 @@
   +box-shadow(inset 0 -8px 5px -4px white)
   z-index: 100
   height: 8px
-  top: auto
+  margin-top: -7px
+  top: 96.80851%
+  bottom: auto
 
 .header
-  padding-left: 30px
+  padding-left: 25px
   padding-bottom: 10px
 
 .header > *
@@ -70,11 +74,14 @@
   border-bottom: 1px solid #e5e5e5
 
 .buttons
-  padding-left: 30px
+  padding-left: 25px
   padding-bottom: 10px
 
 .buttons > *
   +box-shadow(0 0 5px 5px white)
+
+ul
+  margin-left: 20px
 
 li
   font-size: 20px
