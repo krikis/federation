@@ -1,14 +1,19 @@
 - param_name, human_name = object.class.param_name, object.class.human_name
-- if object.id
-  - path = url_for(controller: object.class.param_name.pluralize, action: 'update', id: object.id, only_path: true)
-  - method, title, modal_id = :put, "Edit #{human_name}", object.id
+- if object.persisted?
+  - if edit_mode
+    - path = url_for(controller: object.class.param_name.pluralize, action: 'update', id: object.id, only_path: true)
+    - method, title, modal_id = :put, "Edit #{human_name}", object.id
+  - else
+    - path, method, title, modal_id = '#', :get, human_name, object.send(primary_key)
 - else
   - path = url_for(controller: object.class.param_name.pluralize, action: 'create', only_path: true)
   - method, title, modal_id = :post, "New #{human_name}", 'new'
 -# generate form templates for associations
 - if edit_mode
   - object.class.associations.each do |association|
-    = render partial: 'layouts/association_form_template', locals: {association: association, object: object, primary_key: primary_key}
+    = render partial: 'layouts/association_form_template',
+             locals: {association: association, object: object,
+                      primary_key: primary_key, edit_mode: edit_mode}
 -# in modal editor
 .modal.hide.fade{id: modal_id, class: "#{param_name}_editor"}
   = form_tag(path, method: method, class: 'form-horizontal') do
@@ -21,13 +26,22 @@
         %fieldset
           %legend= human_name
           - object.form_details.each do |key, label, type, value|
-            = render partial: 'layouts/attribute_form_element', locals: {key: key, label: label, type: type, value: value, param: param_name, primary_key: primary_key}
+            = render partial: 'layouts/attribute_form_element',
+                     locals: {key: key, label: label, type: type, value: value,
+                              param: param_name, primary_key: primary_key,
+                              edit_mode: edit_mode}
           - # render association details
           - object.class.associations.each do |association|
-            = render partial: 'layouts/association_form', locals: {association: association, object: object, primary_key: primary_key}
+            = render partial: 'layouts/association_form',
+                     locals: {association: association, object: object,
+                              primary_key: primary_key, edit_mode: edit_mode}
       .scroll-helper
     .modal-footer
-      %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Cancel
-      %button.btn.btn-primary{type: 'submit', data: {'loading-text' => 'Working'}}
-        Submit
+      - if edit_mode
+        %a.btn{href: '#', data: {dismiss: 'modal'}}
+          Cancel
+        %button.btn.btn-primary{type: 'submit', data: {'loading-text' => 'Working'}}
+          Submit
+      - else
+        %a.btn{href: '#', data: {dismiss: 'modal'}}
+          Close

@@ -2,6 +2,11 @@
   %label.control-label= label
   .controls
     - if type == :datetime
-      = select_date value, :order => [:day, :month, :year], prefix: param, field_name: key, include_position: true, include_blank: true
+      = select_date value, :order => [:day, :month, :year], prefix: param,
+                           field_name: key, include_position: true,
+                           include_blank: true, disabled: (not edit_mode)
     - else
-      = text_field_tag "#{param}[#{key}]", value, class: 'span12', maxlength: 40, placeholder: key
+      = text_field_tag "#{param}[#{key}]", value, class: 'span12',
+                                                  maxlength: 40,
+                                                  placeholder: key,
+                                                  disabled: (not edit_mode)
