@@ -5,7 +5,7 @@ describe EpdPatientWasMzkhAdmittedForAdmitReasonOnDate do
   context 'when an MZKH role exists' do
     let(:mzkh_local_nr) { 111 }
     let!(:mzkh_role) do
-      Fabricate :epd_patient_plays_role_using_local_nr,
+      Fabricate :gi,
                 role: 'MZKH',
                 local_nr: mzkh_local_nr,
                 epd_patient_id: 110

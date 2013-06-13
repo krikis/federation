@@ -5,7 +5,7 @@ describe UmcgPatient do
   context 'when a UMCG role exists' do
     let(:umcg_local_nr) { 112 }
     let!(:umcg_role) do
-      Fabricate :epd_patient_plays_role_using_local_nr,
+      Fabricate :gi,
                 role: 'UMCG',
                 local_nr: umcg_local_nr,
                 epd_patient_id: 110
