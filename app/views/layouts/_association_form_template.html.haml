@@ -1,5 +1,5 @@
 - param_name, human_name = association.klass.param_name, association.klass.human_name
-%div{id: param_name, style: 'display: none'}
+%div{id: "#{param_name}_#{object.id}", style: 'display: none'}
   %div
     %legend= human_name
     - param = "#{param_name}[new][]"
