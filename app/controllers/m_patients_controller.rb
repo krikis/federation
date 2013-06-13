@@ -15,7 +15,7 @@ class MPatientsController < ApplicationController
 
   def update
     if m_patient = MPatient.find_by_id(params[:id])
-      m_patient.update_attributes params[:m_patient]
+      m_patient.update_attributes params[:m_patient] if params[:m_patient]
       if admissions = params[:m_patient_admitted_for_admission_reason_on_date]
         new_admissions = admissions.delete(:new)
         admissions.keys.each do |admission_id|
