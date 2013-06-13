@@ -4,7 +4,7 @@
     .buttons
       = link_to "#{icon(:plus, :white)} Add #{object_class.human_name}".html_safe,
                 '#',
-                class: 'btn btn-info btn-small',
+                class: 'btn btn-info btn-small btn-block',
                 'data-toggle' => 'modal',
                 'data-target' => ".#{object_class.param_name}_editor#new"
   - else
