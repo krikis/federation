@@ -21,6 +21,9 @@
   overflow-x: hidden
   overflow-y: auto
 
+  .scroll-spacer
+    height: 8px
+
 .m-patients
   @extend .scrollable
   width: 38.07092%
@@ -64,21 +67,18 @@
   bottom: auto
 
 .header
-  padding-left: 25px
   padding-bottom: 10px
 
-.header > *
-  +box-shadow(0 0 5px 5px white)
-  margin: 0
+.scroll-fade
+  padding-left: 25px
   background-color: white
-  border-bottom: 1px solid #e5e5e5
-
-.buttons
-  padding-left: 25px
-  padding-bottom: 10px
-
-.buttons > *
   +box-shadow(0 0 5px 5px white)
+
+h4
+  margin: 0
+  padding-top: 5px
+  margin-bottom: 5px
+  border-bottom: 1px solid #e5e5e5
 
 ul
   margin-left: 20px
