@@ -1,4 +1,4 @@
-- param_name, human_name = association.klass.param_name, association.klass.human_name
+- param_name, human_name = association.name, association.klass.human_name
 - if (associated = object.send(association.name)).present?
   - if associated.is_a? Array
     - associated.each do |associated_object|
