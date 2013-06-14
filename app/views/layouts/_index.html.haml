@@ -10,7 +10,7 @@
                   'data-target' => ".#{object_class.param_name}_editor#new"
       - else
         %h4= object_class.human_name.pluralize
-%div{class: class_name}
+%div{class: class_name, id: class_name}
   %ul.fat-rows
     - objects.each do |object|
       %li.fat-row
@@ -18,3 +18,7 @@
   .scroll-spacer
 .fade-in{class: class_name}
 .fade-out{class: class_name}
+
+:coffeescript
+  $ ->
+    ScrollFix('##{class_name}')
