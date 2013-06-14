@@ -14,7 +14,7 @@
   %ul.fat-rows
     - objects.each do |object|
       %li.fat-row
-        = render partial: 'layouts/show', locals: {object: object, primary_key: primary_key, edit_mode: edit_mode}
+        = render partial: 'layouts/show', locals: {object: object, primary_keys: primary_keys, edit_mode: edit_mode}
   .scroll-spacer
 .fade-in{class: class_name}
 .fade-out{class: class_name}

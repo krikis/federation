@@ -6,13 +6,13 @@
         - unless associated_object == associated.first
           %span.separator &middot;
         - associated_object.details.each do |key, value|
-          - if key == primary_key
+          - if primary_keys.include? key
             %span.label.label-important= value
           - else
             %span.label.label-success= value
     - else
       - associated.details.each do |key, value|
-        - if key == primary_key
+        - if primary_keys.include? key
           %span.label.label-important= value
         - else
           %span.label.label-success= value

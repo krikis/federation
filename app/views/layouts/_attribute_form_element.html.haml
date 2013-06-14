@@ -1,4 +1,4 @@
-.control-group.row-fluid{class: ('info' if key == primary_key)}
+.control-group.row-fluid{class: ('info' if primary_keys.include? key)}
   %label.control-label= label
   .controls
     - if type == :datetime

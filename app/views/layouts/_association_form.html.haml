@@ -7,7 +7,7 @@
       - associated_object.form_details.each do |key, label, type, value|
         = render partial: 'layouts/attribute_form_element',
                  locals: {key: key, label: label, type: type, value: value,
-                          param: param, primary_key: primary_key,
+                          param: param, primary_keys: primary_keys,
                           edit_mode: edit_mode}
   - else
     %legend= human_name
@@ -15,7 +15,7 @@
     - associated.form_details.each do |key, label, type, value|
       = render partial: 'layouts/attribute_form_element',
                locals: {key: key, label: label, type: type, value: value,
-                        param: param, primary_key: primary_key,
+                        param: param, primary_keys: primary_keys,
                         edit_mode: edit_mode}
 - if edit_mode
   %a.btn.btn-info.btn-block.add-button{href: '#', id: "#{param_name}_#{object.id}"}
