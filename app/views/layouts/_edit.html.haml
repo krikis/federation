@@ -21,7 +21,7 @@
       %a.close{data: {dismiss: 'modal'}}
         ×
       %h3= title
-    .modal-body
+    .modal-body{id: "scroll_#{modal_id}_#{param_name}"}
       .container-fluid
         %fieldset
           %legend= human_name
@@ -45,3 +45,7 @@
       - else
         %a.btn{href: '#', data: {dismiss: 'modal'}}
           Close
+
+:coffeescript
+  $ ->
+    ScrollFix('#scroll_#{modal_id}_#{param_name}')
