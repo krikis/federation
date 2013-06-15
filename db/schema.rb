@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607093031) do
+ActiveRecord::Schema.define(:version => 20130615190207) do
+
+  create_table "common_objects", :id => false, :force => true do |t|
+    t.integer  "epd_patient_id"
+    t.datetime "date"
+    t.string   "gender"
+    t.string   "name"
+    t.integer  "home_phone_nr",  :limit => 8
+  end
 
   create_table "epd_patient_plays_role_using_local_nrs", :force => true do |t|
     t.integer  "local_nr"
