@@ -3,6 +3,7 @@ Federation::Application.routes.draw do
   root to: 'federations#show'
 
   resource  :federation, only: 'show'
+  resource  :exchange, only: 'show'
   resources :m_patients, only: [:create, :update, :destroy]
   resources :u_patients, only: [:create, :update, :destroy]
   resources :gis, only: [:create, :update, :destroy]
