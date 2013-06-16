@@ -1,0 +1,2 @@
+class CommonObjectsController < ApplicationController
+end

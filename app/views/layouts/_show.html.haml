@@ -18,7 +18,7 @@
               url_for(controller: object.class.param_name.pluralize, action: 'destroy', id: object.id, only_path: true),
               method: 'delete',
               class: 'btn btn-small btn-danger',
-              confirm: "Are sure you want to delete the #{object.class.human_name} with #{primary_keys.map{|key|"#{key} '#{object.attributes[key]}'"}.to_sentence}?"
+              confirm: "Are sure you want to delete the #{object.class.human_name} with #{primary_keys.map{|key|"#{key} '#{object.attributes[key]}'" if object.attributes[key]}.compact.to_sentence}?"
   - else
     - modal_id = primary_keys.map{|pk|object.send(pk) if object.respond_to? pk}.compact.join('_')
     = link_to icon(:'eye-open').html_safe,
