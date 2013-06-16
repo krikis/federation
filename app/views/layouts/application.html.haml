@@ -7,3 +7,17 @@
     = csrf_meta_tags
   %body
     = yield
+    #globalmodal.modal.hide
+      .modal-header
+        %a.close{:data => {:dismiss => 'modal'}}
+          ×
+        %h3
+          Confirm
+      .modal-body
+        %p
+      .modal-footer
+        %a.btn{:href => "#"}
+          Cancel
+        %a.btn.btn-primary{:href => '#', 'data-loading-text' => 'Working...'}
+          OK
+

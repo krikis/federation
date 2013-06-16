@@ -16,6 +16,7 @@
 #= require bootstrap
 #= require scroll_to
 #= require scrollfix
+#= require confirm_dialog
 #= require_tree .
 
 @getSemaphore = ->
