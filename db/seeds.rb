@@ -46,9 +46,10 @@ UPatient.create u_patient_nr: u_patient_1, date: random_birthdate, gender: 'Male
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_1
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_1
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_1
-UPatientTreatment.create date: random_date, u_patient_nr: u_patient_1, doctor_id: 12
-UPatientTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug5', u_patient_nr: u_patient_1
-UPatientTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug6', u_patient_nr: u_patient_1
+treatment_date = random_date
+UPatientTreatment.create date: treatment_date, u_patient_nr: u_patient_1, doctor_id: 12
+UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug5', u_patient_nr: u_patient_1
+UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug6', u_patient_nr: u_patient_1
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason1', date: random_date, u_patient_nr: u_patient_1
 
 u_patient_2 = 2031
@@ -56,9 +57,10 @@ UPatient.create u_patient_nr: u_patient_2, date: random_date, gender: 'Female', 
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_2
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_2
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_2
-UPatientTreatment.create date: random_date, u_patient_nr: u_patient_2, doctor_id: 13
-UPatientTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug3', u_patient_nr: u_patient_2
-UPatientTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug7', u_patient_nr: u_patient_2
+treatment_date = random_date
+UPatientTreatment.create date: treatment_date, u_patient_nr: u_patient_2, doctor_id: 13
+UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug3', u_patient_nr: u_patient_2
+UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug7', u_patient_nr: u_patient_2
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason2', date: random_date, u_patient_nr: u_patient_2
 
 u_patient_3 = 2032
@@ -66,8 +68,9 @@ UPatient.create u_patient_nr: u_patient_3, gender: 'Female'
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3
-UPatientTreatment.create date: random_date, u_patient_nr: u_patient_3, doctor_id: 12
-UPatientTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug8', u_patient_nr: u_patient_3
+treatment_date = random_date
+UPatientTreatment.create date: treatment_date, u_patient_nr: u_patient_3, doctor_id: 12
+UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug8', u_patient_nr: u_patient_3
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason3', date: random_date, u_patient_nr: u_patient_3
 
 # ------------------------------------ Gis -------------------------------------
