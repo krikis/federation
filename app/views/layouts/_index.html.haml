@@ -16,9 +16,9 @@
       - if edit_mode.is_a? Proc
         - object_edit_mode = edit_mode.call(object)
       - else
-        - object_edit_model = edit_mode
+        - object_edit_mode = edit_mode
       %li.fat-row
-        = render partial: 'layouts/show', locals: {object: object, primary_keys: primary_keys, edit_mode: object_edit_model}
+        = render partial: 'layouts/show', locals: {object: object, primary_keys: primary_keys, edit_mode: object_edit_mode}
   .scroll-spacer
 .fade-out{class: class_name}
 

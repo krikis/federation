@@ -14,7 +14,7 @@
            locals: {objects:(@u_patients + @common_objects),
                     object_class: UPatient,
                     primary_keys: ['u_patient_nr', 'epd_patient_id', 'martini_patient_nr', 'umcg_patient_nr'],
-                    edit_mode: lambda{|object| object.is_a? UPatient}}
+                    edit_mode: lambda{|object| Rails.logger.error object.class;object.is_a? UPatient}}
 
 -# render object editors
 - ([MPatient.new] + @m_patients).each do |object|
