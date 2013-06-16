@@ -4,6 +4,7 @@ Federation::Application.routes.draw do
 
   resource  :federation, only: 'show'
   resource  :exchange, only: 'show'
+  resource  :common_objects, only: 'show'
   resources :m_patients, only: [:create, :update, :destroy]
   resources :u_patients, only: [:create, :update, :destroy]
   resources :gis, only: [:create, :update, :destroy]
