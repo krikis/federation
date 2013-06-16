@@ -9,7 +9,7 @@ class UPatientsController < ApplicationController
         end
       end
     end
-    redirect_to root_path
+    redirect_to :back
   end
 
   def update
@@ -28,12 +28,12 @@ class UPatientsController < ApplicationController
         end
       end
     end
-    redirect_to root_path
+    redirect_to :back
   end
 
   def destroy
     UPatient.find_by_id(params[:id]).andand.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
 end
