@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615190207) do
+ActiveRecord::Schema.define(:version => 20130620182959) do
 
   create_table "common_objects", :id => false, :force => true do |t|
     t.integer  "epd_patient_id"
@@ -145,6 +145,10 @@ ActiveRecord::Schema.define(:version => 20130615190207) do
     t.integer "epd_patient_id"
     t.integer "mobile_phone_nr"
     t.integer "office_phone_nr"
+  end
+
+  create_table "umcg_prolife4_doctors", :id => false, :force => true do |t|
+    t.integer "umcg_doctor_id"
   end
 
   create_table "umcg_treatment_involves_drugs", :id => false, :force => true do |t|
