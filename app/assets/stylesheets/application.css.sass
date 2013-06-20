@@ -24,6 +24,21 @@
   .scroll-spacer
     height: 8px
 
+.right-panel
+  @extend .scrollable
+  width: 38.07092%
+  left: 1.06383%
+
+.top-right-panel
+  @extend .right-panel
+  bottom: 51.595745%
+.top-right-panel.fade-out
+  top: 48.404255%
+
+.bottom-right-panel
+  @extend .right-panel
+  top: 51.595745%
+
 .center-panel
   @extend .scrollable
   width: 17.60284%
@@ -35,12 +50,7 @@
   left: 58.86525%
 
 .m-patients
-  @extend .scrollable
-  width: 38.07092%
-  left: 1.06383%
-  bottom: 51.595745%
-.m-patients.fade-out
-  top: 48.404255%
+  @extend .top-right-panel
 
 .exchange
   .m-patients
@@ -51,10 +61,7 @@
     bottom: auto
 
 .u-patients
-  @extend .scrollable
-  width: 38.07092%
-  top: 51.595745%
-  left: 1.06383%
+  @extend .bottom-right-panel
 
 .exchange
   .u-patients
