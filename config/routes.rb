@@ -6,6 +6,7 @@ Federation::Application.routes.draw do
   resource  :exchange, only: 'show'
   resource  :common_objects, only: 'show'
   resource  :umcg_prolife4_doctors, only: 'show'
+  resource  :mzkh_diabetes_patients, only: 'show'
   resources :m_patients, only: [:create, :update, :destroy]
   resources :u_patients, only: [:create, :update, :destroy]
   resources :gis, only: [:create, :update, :destroy]
