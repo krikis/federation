@@ -1,0 +1,59 @@
+-# render object show views
+= render partial: 'layouts/index',
+         locals: {objects: @m_patients,
+                  object_class: MPatient,
+                  primary_keys: ['m_patient_nr'],
+                  edit_mode: true}
+= render partial: 'layouts/index',
+         locals: {objects: @u_patients,
+                  object_class: UPatient,
+                  primary_keys: ['u_patient_nr'],
+                  edit_mode: true}
+= render partial: 'layouts/index',
+         locals: {objects: @gis,
+                  object_class: Gi,
+                  primary_keys: ['epd_patient_id', 'local_nr'],
+                  edit_mode: true}
+= render partial: 'layouts/index',
+         locals: {objects: @umcg_prolife4_doctors,
+                  object_class: UmcgProlife4Doctor,
+                  primary_keys: ['umcg_doctor_id'],
+                  edit_mode: false}
+
+-# render object editors
+- ([MPatient.new] + @m_patients).each do |object|
+  = render partial: 'layouts/edit',
+           locals: {object: object,
+                    primary_keys: ['m_patient_nr'],
+                    edit_mode: true}
+- ([UPatient.new] + @u_patients).each do |object|
+  = render partial: 'layouts/edit',
+           locals: {object: object,
+                    primary_keys: ['u_patient_nr'],
+                    edit_mode: true}
+- ([Gi.new] + @gis).each do |object|
+  = render partial: 'layouts/edit',
+           locals: {object: object,
+                    primary_keys: ['epd_patient_id', 'local_nr'],
+                    edit_mode: true}
+- (@umcg_prolife4_doctors).each do |object|
+  = render partial: 'layouts/edit',
+           locals: {object: object,
+                    primary_keys: ['umcg_doctor_id'],
+                    edit_mode: false}
+
+:coffeescript
+  $ ->
+    $('.fat-row').hover (->
+      $(@).find('.fat-row-buttons').show()
+    ), (->
+      $(@).find('.fat-row-buttons').hide()
+    )
+
+    $('a.add-button').click ->
+      form_content = $($("div#\#{$(@).attr('id')}").html())
+      form_content.insertBefore($(@))
+      $(@).parents('.modal-body').scrollTo(form_content, duration: 200)
+      form_content.effect('highlight')
+      form_content.find(':input:visible:first').focus()
+      false

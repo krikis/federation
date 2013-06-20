@@ -24,6 +24,16 @@
   .scroll-spacer
     height: 8px
 
+.center-panel
+  @extend .scrollable
+  width: 17.60284%
+  left: 40.19858%
+
+.left-panel
+  @extend .scrollable
+  width: 40.07092%
+  left: 58.86525%
+
 .m-patients
   @extend .scrollable
   width: 38.07092%
@@ -54,19 +64,10 @@
     top: 96.80851%
 
 .gis
-  @extend .scrollable
-  width: 17.60284%
-  left: 40.19858%
+  @extend .center-panel
 
-.epd-patients
-  @extend .scrollable
-  width: 40.07092%
-  left: 58.86525%
-
-.common-objects
-  @extend .scrollable
-  width: 40.07092%
-  left: 58.86525%
+.epd-patients, .common-objects, .umcg-prolife4-doctors
+  @extend .left-panel
 
 .add
   bottom: auto

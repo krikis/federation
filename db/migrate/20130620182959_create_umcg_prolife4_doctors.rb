@@ -1,4 +1,4 @@
-class FirstQuery < ActiveRecord::Migration
+class CreateUmcgProlife4Doctors < ActiveRecord::Migration
   def up
     execute <<-SQL
       /* Give all UMCG-doctors that treated patients at the UMCG-hospital */
