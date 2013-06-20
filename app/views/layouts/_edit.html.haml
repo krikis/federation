@@ -4,7 +4,7 @@
     - path = url_for(controller: object.class.param_name.pluralize, action: 'update', id: object.id, only_path: true)
     - method, title, modal_id = :put, "Edit #{human_name}", object.id
   - else
-    - path, method, title, modal_id = '#', :get, human_name, primary_keys.map{|pk|object.send(pk) if object.respond_to? pk}.compact.join('_')
+    - path, method, title, modal_id = '#', :get, human_name, primary_keys.map{|pk|object.send(pk).to_s.parameterize.underscore if object.respond_to? pk}.compact.join('_')
 - else
   - path = url_for(controller: object.class.param_name.pluralize, action: 'create', only_path: true)
   - method, title, modal_id = :post, "New #{human_name}", 'new'
