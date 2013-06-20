@@ -63,10 +63,10 @@ describe CommonObject do
 
     context 'and both an MPatient and UPatient exists' do
       let!(:m_patient) do
-        Fabricate :m_patient, m_patient_nr: mzkh_local_nr, date: Date.today, name: 'some_name'
+        Fabricate :m_patient, m_patient_nr: mzkh_local_nr, date: Date.today, name: ''
       end
       let!(:u_patient) do
-        Fabricate :u_patient, u_patient_nr: umcg_local_nr, gender: 'Female'
+        Fabricate :u_patient, u_patient_nr: umcg_local_nr, gender: 'Female', name: 'some_name'
       end
       let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
 
@@ -74,7 +74,7 @@ describe CommonObject do
         CommonObject.first.attributes.should eq("epd_patient_id" => epd_patient_id,
                                               "date" => m_patient.date,
                                               "gender" => u_patient.gender,
-                                              "name" => m_patient.name,
+                                              "name" => u_patient.name,
                                               "home_phone_nr" => u_patient_phone.phone)
       end
     end

@@ -84,7 +84,7 @@ describe EpdPatient do
         Fabricate :m_patient, m_patient_nr: mzkh_local_nr, date: Date.today, name: 'some_name'
       end
       let!(:u_patient) do
-        Fabricate :u_patient, u_patient_nr: umcg_local_nr, gender: 'Female'
+        Fabricate :u_patient, u_patient_nr: umcg_local_nr, gender: 'Female', name: ''
       end
       let!(:u_patient_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
 
