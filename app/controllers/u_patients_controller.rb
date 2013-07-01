@@ -17,11 +17,15 @@ class UPatientsController < ApplicationController
   def update
     if u_patient = UPatient.find_by_id(params[:id])
       UPatient.transaction do
+        old_u_patient_nr = u_patient.u_patient_nr
         u_patient.update_attributes params[:u_patient] if params[:u_patient]
         UPatient.associations.each do |association|
           if associated = params[association.name]
             new_associated = associated.delete(:new)
             associated.keys.each do |associated_id|
+              if associated[associated_id]['u_patient_nr'] == old_u_patient_nr.to_s
+                associated[associated_id]['u_patient_nr'] = u_patient.u_patient_nr
+              end
               association.klass.find_by_id(associated_id).andand
                 .update_attributes associated[associated_id]
             end
