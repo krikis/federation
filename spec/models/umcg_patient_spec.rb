@@ -19,6 +19,7 @@ describe UmcgPatient do
     end
 
     context 'when a UPatient phone is present' do
+      let!(:u_patient) { UPatient.create u_patient_nr: umcg_local_nr }
       let!(:u_home_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 12345678 }
       let!(:u_mobile_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 123456789 }
       let!(:u_office_phone) { UPatientHasPhone.create u_patient_nr: umcg_local_nr, phone: 1234567890 }

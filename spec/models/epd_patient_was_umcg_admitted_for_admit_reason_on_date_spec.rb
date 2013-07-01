@@ -13,6 +13,7 @@ describe EpdPatientWasUmcgAdmittedForAdmitReasonOnDate do
 
     context 'and an admission for this role exists' do
       let!(:umcg_admission) do
+        Fabricate :u_patient, u_patient_nr: umcg_local_nr
         Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                   date: Date.today,
                   admittance_reason: 'admission_reason',

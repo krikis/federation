@@ -15,6 +15,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
@@ -34,6 +35,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
@@ -53,6 +55,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'other_reason',
                                u_patient_nr: umcg_local_nr
@@ -72,6 +75,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
@@ -91,6 +95,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2011, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
@@ -110,6 +115,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
@@ -129,6 +135,7 @@ describe MzkhDiabetesPatient do
                                m_patient_nr: mzkh_local_nr
     umcg_local_nr = 112
     umcg_role = Fabricate :gi, role: 'UMCG', local_nr: umcg_local_nr, epd_patient_id: epd_patient_id
+    u_patient = Fabricate :u_patient, u_patient_nr: umcg_local_nr
     umcg_admission = Fabricate :u_patient_was_admitted_for_admittance_reason_on_date,
                                date: Date.new(2013, 7, 12), admittance_reason: 'Liver disease',
                                u_patient_nr: umcg_local_nr
