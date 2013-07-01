@@ -12,7 +12,7 @@ def random_birthdate
 end
 
 def random_date
-  rand(2000).days.ago
+  rand(2000).days.ago.to_date
 end
 
 def random_phone_nr
