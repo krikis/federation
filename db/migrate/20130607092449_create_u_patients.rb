@@ -8,5 +8,7 @@ class CreateUPatients < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    execute 'alter table u_patients drop primary key, add primary key (id, u_patient_nr), add index (u_patient_nr)'
   end
 end

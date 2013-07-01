@@ -7,5 +7,8 @@ class CreateUPatientTreatments < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    execute 'alter table u_patient_treatments drop primary key, add primary key (id, u_patient_nr, date), add index (u_patient_nr, date)'
+    execute 'alter table u_patient_treatments add foreign key (u_patient_nr) references u_patients(u_patient_nr)'
   end
 end
