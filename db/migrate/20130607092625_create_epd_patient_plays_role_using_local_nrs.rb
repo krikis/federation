@@ -7,5 +7,7 @@ class CreateEpdPatientPlaysRoleUsingLocalNrs < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    execute 'alter table epd_patient_plays_role_using_local_nrs add unique index (role, local_nr)'
   end
 end
