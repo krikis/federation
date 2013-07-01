@@ -1,6 +1,7 @@
 class CommonObject < ActiveRecord::Base
 
   include HasDetails
+  self.primary_key = :id
 
   has_one  :martini_patient,
            primary_key: 'epd_patient_id',

@@ -1,6 +1,7 @@
 class MPatient < ActiveRecord::Base
 
   include HasDetails
+  self.primary_key = :id
 
   has_many :m_patient_is_allergic_to_drugs,
            primary_key: 'm_patient_nr',
