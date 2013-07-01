@@ -9,6 +9,6 @@ class CreateUPatientTreatmentInvolvesDrugs < ActiveRecord::Migration
     end
 
     execute 'alter table u_patient_treatment_involves_drugs add unique index (u_patient_nr, drug_code, date)'
-    execute 'alter table u_patient_treatment_involves_drugs add foreign key (u_patient_nr, date) references u_patient_treatments(u_patient_nr, date)'
+    execute 'alter table u_patient_treatment_involves_drugs add foreign key (u_patient_nr, date) references u_patient_treatments(u_patient_nr, date) on update cascade'
   end
 end
