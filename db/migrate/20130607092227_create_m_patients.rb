@@ -10,6 +10,6 @@ class CreateMPatients < ActiveRecord::Migration
       t.timestamps
     end
 
-    execute 'alter table m_patients drop primary key, add primary key (id, m_patient_nr), add index (m_patient_nr)'
+    execute 'alter table m_patients add unique index (m_patient_nr)'
   end
 end

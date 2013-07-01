@@ -30,14 +30,14 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
   end
 
   create_table "epd_patient_was_mzkh_admitted_for_admit_reason_on_dates", :id => false, :force => true do |t|
-    t.string   "admit_reason_code", :default => "", :null => false
-    t.datetime "date",                              :null => false
+    t.string   "admit_reason_code"
+    t.datetime "date"
     t.integer  "epd_patient_id"
   end
 
   create_table "epd_patient_was_umcg_admitted_for_admit_reason_on_dates", :id => false, :force => true do |t|
-    t.string   "admit_reason_code", :default => "", :null => false
-    t.datetime "date",                              :null => false
+    t.string   "admit_reason_code"
+    t.datetime "date"
     t.integer  "epd_patient_id"
   end
 
@@ -49,55 +49,51 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
     t.integer  "home_phone_nr",  :limit => 8
   end
 
-  create_table "m_patient_admitted_for_admission_reason_on_dates", :id => false, :force => true do |t|
-    t.integer  "id",                                    :null => false
-    t.string   "admission_reason_code", :default => "", :null => false
-    t.datetime "date",                                  :null => false
-    t.integer  "m_patient_nr",          :default => 0,  :null => false
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+  create_table "m_patient_admitted_for_admission_reason_on_dates", :force => true do |t|
+    t.string   "admission_reason_code"
+    t.datetime "date"
+    t.integer  "m_patient_nr"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
-  add_index "m_patient_admitted_for_admission_reason_on_dates", ["m_patient_nr"], :name => "m_patient_nr"
+  add_index "m_patient_admitted_for_admission_reason_on_dates", ["m_patient_nr", "date", "admission_reason_code"], :name => "m_patient_nr", :unique => true
 
-  create_table "m_patient_is_allergic_to_drugs", :id => false, :force => true do |t|
-    t.integer  "id",                           :null => false
-    t.string   "drug_code",    :default => "", :null => false
-    t.integer  "m_patient_nr", :default => 0,  :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+  create_table "m_patient_is_allergic_to_drugs", :force => true do |t|
+    t.string   "drug_code"
+    t.integer  "m_patient_nr"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "m_patient_is_allergic_to_drugs", ["m_patient_nr"], :name => "m_patient_nr"
+  add_index "m_patient_is_allergic_to_drugs", ["m_patient_nr", "drug_code"], :name => "m_patient_nr", :unique => true
 
-  create_table "m_patient_treatment_involves_drugs", :id => false, :force => true do |t|
-    t.integer  "id",                            :null => false
-    t.datetime "date",                          :null => false
-    t.string   "drug_code",     :default => "", :null => false
-    t.integer  "m_patient_nr",  :default => 0,  :null => false
-    t.integer  "specialist_id", :default => 0,  :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+  create_table "m_patient_treatment_involves_drugs", :force => true do |t|
+    t.datetime "date"
+    t.string   "drug_code"
+    t.integer  "m_patient_nr"
+    t.integer  "specialist_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "m_patient_treatment_involves_drugs", ["m_patient_nr"], :name => "m_patient_nr"
+  add_index "m_patient_treatment_involves_drugs", ["m_patient_nr", "drug_code", "date", "specialist_id"], :name => "m_patient_nr", :unique => true
 
-  create_table "m_patients", :id => false, :force => true do |t|
-    t.integer  "id",                          :null => false
-    t.integer  "m_patient_nr", :default => 0, :null => false
+  create_table "m_patients", :force => true do |t|
+    t.integer  "m_patient_nr"
     t.datetime "date"
     t.string   "gender"
     t.string   "name"
     t.integer  "phone_number"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "m_patients", ["m_patient_nr"], :name => "m_patient_nr"
+  add_index "m_patients", ["m_patient_nr"], :name => "m_patient_nr", :unique => true
 
   create_table "martini_patient_allergic_to_drugs", :id => false, :force => true do |t|
-    t.string  "drug_code",          :default => "", :null => false
-    t.integer "martini_patient_nr", :default => 0,  :null => false
+    t.string  "drug_code"
+    t.integer "martini_patient_nr"
   end
 
   create_table "martini_patients", :id => false, :force => true do |t|
@@ -106,76 +102,72 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
   end
 
   create_table "martini_treatment_involves_drugs", :id => false, :force => true do |t|
-    t.datetime "date",                               :null => false
-    t.string   "drug_code",          :default => "", :null => false
-    t.integer  "martini_patient_nr", :default => 0,  :null => false
-    t.integer  "martini_doctor_id",  :default => 0,  :null => false
+    t.datetime "date"
+    t.string   "drug_code"
+    t.integer  "martini_patient_nr"
+    t.integer  "martini_doctor_id"
   end
 
   create_table "mzkh_diabetes_patients", :id => false, :force => true do |t|
     t.string "name"
   end
 
-  create_table "u_patient_has_phones", :id => false, :force => true do |t|
-    t.integer  "id",                          :null => false
-    t.integer  "phone",        :default => 0, :null => false
-    t.integer  "u_patient_nr", :default => 0, :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+  create_table "u_patient_has_phones", :force => true do |t|
+    t.integer  "phone"
+    t.integer  "u_patient_nr"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "u_patient_has_phones", ["u_patient_nr"], :name => "u_patient_nr"
+  add_index "u_patient_has_phones", ["u_patient_nr", "phone"], :name => "u_patient_nr", :unique => true
 
-  create_table "u_patient_treatment_involves_drugs", :id => false, :force => true do |t|
-    t.integer  "id",                           :null => false
-    t.datetime "date",                         :null => false
-    t.string   "drug_code",    :default => "", :null => false
-    t.integer  "u_patient_nr", :default => 0,  :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+  create_table "u_patient_treatment_involves_drugs", :force => true do |t|
+    t.datetime "date"
+    t.string   "drug_code"
+    t.integer  "u_patient_nr"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "u_patient_treatment_involves_drugs", ["u_patient_nr", "date"], :name => "u_patient_nr"
+  add_index "u_patient_treatment_involves_drugs", ["u_patient_nr", "date"], :name => "u_patient_nr_2"
+  add_index "u_patient_treatment_involves_drugs", ["u_patient_nr", "drug_code", "date"], :name => "u_patient_nr", :unique => true
 
-  create_table "u_patient_treatments", :id => false, :force => true do |t|
-    t.integer  "id",                          :null => false
-    t.datetime "date",                        :null => false
-    t.integer  "u_patient_nr", :default => 0, :null => false
+  create_table "u_patient_treatments", :force => true do |t|
+    t.datetime "date"
+    t.integer  "u_patient_nr"
     t.integer  "doctor_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "u_patient_treatments", ["u_patient_nr", "date"], :name => "u_patient_nr"
+  add_index "u_patient_treatments", ["u_patient_nr", "date"], :name => "u_patient_nr", :unique => true
 
-  create_table "u_patient_was_admitted_for_admittance_reason_on_dates", :id => false, :force => true do |t|
-    t.integer  "id",                                :null => false
-    t.string   "admittance_reason", :default => "", :null => false
-    t.datetime "date",                              :null => false
-    t.integer  "u_patient_nr",      :default => 0,  :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+  create_table "u_patient_was_admitted_for_admittance_reason_on_dates", :force => true do |t|
+    t.string   "admittance_reason"
+    t.datetime "date"
+    t.integer  "u_patient_nr"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
-  add_index "u_patient_was_admitted_for_admittance_reason_on_dates", ["u_patient_nr"], :name => "u_patient_nr"
+  add_index "u_patient_was_admitted_for_admittance_reason_on_dates", ["u_patient_nr", "date", "admittance_reason"], :name => "u_patient_nr", :unique => true
 
-  create_table "u_patients", :id => false, :force => true do |t|
-    t.integer  "id",                          :null => false
-    t.integer  "u_patient_nr", :default => 0, :null => false
+  create_table "u_patients", :force => true do |t|
+    t.integer  "u_patient_nr"
     t.datetime "date"
     t.string   "gender"
     t.string   "name"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "u_patients", ["u_patient_nr"], :name => "u_patient_nr"
+  add_index "u_patients", ["u_patient_nr"], :name => "u_patient_nr", :unique => true
 
   create_table "umcg_patients", :id => false, :force => true do |t|
     t.integer "umcg_patient_nr"
     t.integer "epd_patient_id"
-    t.integer "mobile_phone_nr", :default => 0
-    t.integer "office_phone_nr", :default => 0
+    t.integer "mobile_phone_nr"
+    t.integer "office_phone_nr"
   end
 
   create_table "umcg_prolife4_doctors", :id => false, :force => true do |t|
@@ -183,14 +175,14 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
   end
 
   create_table "umcg_treatment_involves_drugs", :id => false, :force => true do |t|
-    t.datetime "date",                            :null => false
-    t.string   "drug_code",       :default => "", :null => false
-    t.integer  "umcg_patient_nr", :default => 0,  :null => false
+    t.datetime "date"
+    t.string   "drug_code"
+    t.integer  "umcg_patient_nr"
   end
 
   create_table "umcg_treatments", :id => false, :force => true do |t|
-    t.datetime "date",                           :null => false
-    t.integer  "umcg_patient_nr", :default => 0, :null => false
+    t.datetime "date"
+    t.integer  "umcg_patient_nr"
     t.integer  "umcg_doctor_id"
   end
 
