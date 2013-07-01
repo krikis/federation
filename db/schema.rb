@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620194742) do
+ActiveRecord::Schema.define(:version => 20130701134531) do
 
   create_table "common_objects", :id => false, :force => true do |t|
     t.integer  "epd_patient_id"
