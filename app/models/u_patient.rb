@@ -1,7 +1,6 @@
 class UPatient < ActiveRecord::Base
 
   include HasDetails
-  self.primary_key = :id
 
   has_many :u_patient_has_phones,
            primary_key: 'u_patient_nr',

@@ -1,7 +1,6 @@
 class UmcgPatient < ActiveRecord::Base
 
   include HasDetails
-  self.primary_key = :id
 
   has_many :umcg_treatments,
            primary_key: 'umcg_patient_nr',
