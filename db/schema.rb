@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
   end
 
   create_table "epd_patients", :id => false, :force => true do |t|
-    t.integer  "epd_patient_id",              :null => false
+    t.integer  "epd_patient_id", :null => false
     t.datetime "date"
     t.string   "gender"
     t.string   "name"
-    t.integer  "home_phone_nr",  :limit => 8
+    t.integer  "home_phone_nr"
   end
 
   create_table "m_patient_admitted_for_admission_reason_on_dates", :force => true do |t|

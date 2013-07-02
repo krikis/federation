@@ -74,6 +74,6 @@ UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug8', u
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason3', date: random_date, u_patient_nr: u_patient_3
 
 # ------------------------------------ Gis -------------------------------------
-Gi.where(local_nr: u_patient_3, role: 'UMCG').first.update_attributes epd_patient_id: Gi.where(local_nr: m_patient_3, role: 'MZKH').first.epd_patient_id
+Gi.where(local_nr: m_patient_3, role: 'MZKH').first.update_attributes epd_patient_id: Gi.where(local_nr: u_patient_3, role: 'UMCG').first.epd_patient_id
 
 

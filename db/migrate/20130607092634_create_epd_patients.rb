@@ -1,5 +1,6 @@
 class CreateEpdPatients < ActiveRecord::Migration
   def up
+    execute 'CREATE FUNCTION BigToInt (n BIGINT) RETURNS INTEGER RETURN n;'
     # create the epd_patients view
     execute <<-SQL
       create view epd_patients as
@@ -7,7 +8,7 @@ class CreateEpdPatients < ActiveRecord::Migration
              min(coalesce(m.date, u.date)) as date,
              min(coalesce(case nullif(m.gender, '') when 'M' then 'Male' when 'F' then 'Female' end, nullif(u.gender, ''))) as gender,
              min(coalesce(nullif(m.name, ''), nullif(u.name, ''))) as name,
-             min(coalesce(m.phone_number, p.phone)) as home_phone_nr
+             BigToInt(min(coalesce(m.phone_number, p.phone))) as home_phone_nr
       from epd_patient_plays_role_using_local_nrs r
       left join m_patients m on r.role = 'MZKH' and r.local_nr = m.m_patient_nr
       left join u_patients u on r.role = 'UMCG' and r.local_nr = u.u_patient_nr
@@ -20,5 +21,6 @@ class CreateEpdPatients < ActiveRecord::Migration
 
   def down
     execute 'drop view epd_patients'
+    execute 'drop function BigToInt'
   end
 end
