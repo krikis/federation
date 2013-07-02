@@ -1,9 +1,9 @@
 class CreateMPatientAdmittedForAdmissionReasonOnDates < ActiveRecord::Migration
   def change
     create_table :m_patient_admitted_for_admission_reason_on_dates do |t|
-      t.string :admission_reason_code
-      t.datetime :date
-      t.integer :m_patient_nr
+      t.string :admission_reason_code, null: false
+      t.datetime :date, null: false
+      t.integer :m_patient_nr, null: false
 
       t.timestamps
     end

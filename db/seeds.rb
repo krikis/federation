@@ -35,7 +35,7 @@ MartiniTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug1', marti
 MPatientAdmittedForAdmissionReasonOnDate.create admission_reason_code: 'AdmissionReason1', date: random_date, m_patient_nr: m_patient_2
 
 m_patient_3 = 125
-MPatient.create m_patient_nr: m_patient_3, date: random_birthdate, name: 'Second Opinion'
+MPatient.create m_patient_nr: m_patient_3, gender: 'M', date: random_birthdate, name: 'First Opinion'
 MPatientIsAllergicToDrug.create drug_code: 'Drug6', m_patient_nr: m_patient_3
 MartiniTreatmentInvolvesDrug.create date: random_date, drug_code: 'Drug7', martini_patient_nr: m_patient_3, martini_doctor_id: 10
 MPatientAdmittedForAdmissionReasonOnDate.create admission_reason_code: 'AdmissionReason2', date: random_date, m_patient_nr: m_patient_3
@@ -64,7 +64,7 @@ UPatientTreatmentInvolvesDrug.create date: treatment_date, drug_code: 'Drug7', u
 UPatientWasAdmittedForAdmittanceReasonOnDate.create admittance_reason: 'AdmittanceReason2', date: random_date, u_patient_nr: u_patient_2
 
 u_patient_3 = 2032
-UPatient.create u_patient_nr: u_patient_3, gender: 'Female'
+UPatient.create u_patient_nr: u_patient_3, gender: 'Female', date: random_birthdate, name: 'Second Opinion'
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3
 UPatientHasPhone.create phone: random_phone_nr, u_patient_nr: u_patient_3

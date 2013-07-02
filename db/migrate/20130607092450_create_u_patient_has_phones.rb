@@ -1,8 +1,8 @@
 class CreateUPatientHasPhones < ActiveRecord::Migration
   def change
     create_table :u_patient_has_phones do |t|
-      t.integer :phone
-      t.integer :u_patient_nr
+      t.integer :phone, null: false
+      t.integer :u_patient_nr, null: false
 
       t.timestamps
     end

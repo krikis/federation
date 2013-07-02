@@ -1,9 +1,9 @@
 class CreateUPatientTreatments < ActiveRecord::Migration
   def change
     create_table :u_patient_treatments do |t|
-      t.datetime :date
-      t.integer :u_patient_nr
-      t.integer :doctor_id
+      t.datetime :date, null: false
+      t.integer :u_patient_nr, null: false
+      t.integer :doctor_id, null: false
 
       t.timestamps
     end

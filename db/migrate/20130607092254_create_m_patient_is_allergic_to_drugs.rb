@@ -1,8 +1,8 @@
 class CreateMPatientIsAllergicToDrugs < ActiveRecord::Migration
   def change
     create_table :m_patient_is_allergic_to_drugs do |t|
-      t.string :drug_code
-      t.integer :m_patient_nr
+      t.string :drug_code, null: false
+      t.integer :m_patient_nr, null: false
 
       t.timestamps
     end
