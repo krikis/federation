@@ -1,7 +1,7 @@
 - param_name, human_name = association.name, association.klass.human_name
 - if (associated = object.send(association.name)).present?
   - if associated.is_a? Array
-    - associated.each do |associated_object|
+    - associated.sort_by(&:id).each do |associated_object|
       %legend= human_name
       - param = "#{param_name}[#{associated_object.id}]"
       - associated_object.form_details.each do |key, label, type, value|

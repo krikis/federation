@@ -2,7 +2,7 @@
   %p
     %span.label.label-info= association.name
     - if associated.is_a? Array
-      - associated.each do |associated_object|
+      - associated.sort_by(&:id).each do |associated_object|
         - unless associated_object == associated.first
           %span.separator &middot;
         - associated_object.details.each do |key, value|
