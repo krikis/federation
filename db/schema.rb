@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130701134531) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "epd_patient_plays_role_using_local_nrs", ["role", "epd_patient_id"], :name => "role_2", :unique => true
   add_index "epd_patient_plays_role_using_local_nrs", ["role", "local_nr"], :name => "role", :unique => true
 
   create_table "epd_patient_was_mzkh_admitted_for_admit_reason_on_dates", :id => false, :force => true do |t|
